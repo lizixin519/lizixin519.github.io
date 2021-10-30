@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>跨域问题及其解决方案 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/30.188d7400.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/22.dbb1a96f.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/27.e46db41a.js"><link rel="prefetch" href="/assets/js/28.174bce0e.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/33.18ad113a.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/35.9f348db9.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          跨域问题及其解决方案
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-06-16
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-06-16
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/06/16/_27-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      上一篇 : 深拷贝实现
+    </a> <a href="/posts/2021/06/16/_16-js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6.html" class="post-link" data-v-4e23451f>
+      下一篇 : js事件循环机制
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><p>跨域问题及其解决方案
+</p> <h2 id="为什么会出现跨域问题"><a href="#为什么会出现跨域问题" class="header-anchor">#</a> 为什么会出现跨域问题</h2> <p>由于浏览器的同源策略，导致我们在日常开发或者上线部署的时候会出现跨域问题。</p> <blockquote><p>同源策略：协议、域名、端口在不相同的情况下，由于浏览器的安全策略，或导致跨域问题。</p></blockquote> <h2 id="如何解决跨域"><a href="#如何解决跨域" class="header-anchor">#</a> 如何解决跨域</h2> <p>常用的解决跨域问题的解决方案：</p> <ol><li>jsonp</li> <li>nginx反向代理</li> <li>webpack devServer代理</li> <li>cors跨源资源共享</li></ol> <p>其中jsonp由于其局限性，以及对比其他方案的效果。此处不做介绍。</p> <h3 id="nginx方向代理"><a href="#nginx方向代理" class="header-anchor">#</a> nginx方向代理</h3> <p>nginx反向代理常用在开发环境及线上环境。通过拦截转发请求来处理跨域问题。</p> <p>假如现在前端项目运行在8080端口，而实际后端项目的地址为<code>https://1.1.1.1:9000</code>，需要拦截前缀为api的请求，此时nginx配置为</p> <div class="language-shell extra-class"><pre class="language-shell"><code>
+server <span class="token punctuation">{</span>
+    listen      <span class="token number">8080</span> default_server<span class="token punctuation">;</span>
+    location /api <span class="token punctuation">{</span>
+        proxy_pass https://1.1.1.1:9000<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>假如现在有个接口为<code>/api/test</code>,在没有做转发前为<code>http://localhost:8080/api/test</code>,实际接口位置为<code>https://1.1.1.1:9000/api/test</code>.结果转发为实际接口位置。</p> <h3 id="webpack-devserver代理"><a href="#webpack-devserver代理" class="header-anchor">#</a> webpack devserver代理</h3> <p>webpack devserver代理用在开发环境。</p> <p>配置如下</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">devServer</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    proxy<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token string">'/api'</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            target<span class="token operator">:</span> <span class="token string">'https://1.1.1.1:9000'</span><span class="token punctuation">,</span>
+            changeOrigin<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+            pathRewrite<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token string">'^/api'</span><span class="token operator">:</span> <span class="token string">'api'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h3 id="cors跨源资源共享"><a href="#cors跨源资源共享" class="header-anchor">#</a> cors跨源资源共享</h3> <p>跨源资源共享 (CORS) （或通俗地译为跨域资源共享）是一种基于HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其它origin（域，协议和端口），这样浏览器可以访问加载这些资源。</p> <div class="language-json extra-class"><pre class="language-json"><code>Access-Control-Allow-Origin<span class="token operator">:</span> 'xxx'
+</code></pre></div><p>可以通过服务端设置<code>Access-Control-Allow-Origin</code>字段的白名单来处理跨域问题。</p> <blockquote><p>如果在此情况下，发送请求时需要带上cookie的话，则需要配置<code>Access-Control-Allow-Credentials</code>,同时客户端需要同步设置<code>xhr.withCredentials = true;</code>,两者缺一不可</p></blockquote> <!----></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-06-16
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-06-16
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/06/16/_27-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      上一篇 : 深拷贝实现
+    </a> <a href="/posts/2021/06/16/_16-js%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF%E6%9C%BA%E5%88%B6.html" class="post-link" data-v-4e23451f>
+      下一篇 : js事件循环机制
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><div class="post-nav-contents"><svg class="icon"><title>book</title><use xlink:href="#icon-book"></use></svg> <span>文章目录</span> <div class="post-nav-toc"><ul><li><a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#为什么会出现跨域问题">为什么会出现跨域问题</a></li><li><a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#如何解决跨域">如何解决跨域</a><ul><li><a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#nginx方向代理">nginx方向代理</a></li><li><a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#webpack-devserver代理">webpack devserver代理</a></li><li><a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#cors跨源资源共享">cors跨源资源共享</a></li></ul></li></ul></div></div> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2021/06/16/_16-%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98%E5%8F%8A%E5%85%B6%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/30.188d7400.js" defer></script>
+  </body>
+</html>

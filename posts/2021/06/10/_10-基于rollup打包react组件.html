@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>rollup打包react组件 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/28.174bce0e.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/22.dbb1a96f.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/27.e46db41a.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/30.188d7400.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/33.18ad113a.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/35.9f348db9.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          rollup打包react组件
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-06-10
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-06-11
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/12/24/_24-linux%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86.html" class="post-link" data-v-4e23451f>
+      上一篇 : linux免密登陆
+    </a> <a href="/posts/2021/06/16/_27-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      下一篇 : 深拷贝实现
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><p>rollup打包react组件
+</p> <h2 id="_1-为什么选用rollup"><a href="#_1-为什么选用rollup" class="header-anchor">#</a> 1. 为什么选用rollup</h2> <p>相较于webpack，rollup可以打出esmodule的包，能更好的支持tree-shaking,而webpack打出的umd格式的包体积略大，但是项目如果有特别复杂的图片以及一些require路径，则用rollup可能配置起来会很麻烦,这时建议使用webpack。
+总的来说，还是根据业务需求来确定打包工具的使用。</p> <h2 id="_2-rollup基本概念"><a href="#_2-rollup基本概念" class="header-anchor">#</a> 2. rollup基本概念</h2> <h3 id="_2-1-入口"><a href="#_2-1-入口" class="header-anchor">#</a> 2.1. 入口</h3> <p>rollup和webpack一样，会从入口文件开始进行依赖分析，然后进行打包构建</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// rollup.config.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    input<span class="token operator">:</span> <span class="token string">'./src/index'</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-2-出口"><a href="#_2-2-出口" class="header-anchor">#</a> 2.2. 出口</h3> <p>指定rollup构建完成之后的目录，</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// rollup.config.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    input<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+    output<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 打包完成之后结果要写入的文件</span>
+        file<span class="token operator">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 生成包的格式</span>
+        format<span class="token operator">:</span> <span class="token string">'esm'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 变量名 代表你的 iife/umd 包</span>
+        name<span class="token operator">:</span> <span class="token string">'myBundle'</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>其中format支持常用的几种包格式,一下是几种常用的包格式</p> <ul><li>amd – 异步模块定义，用于像RequireJS这样的模块加载器</li> <li>cjs – CommonJS，适用于 Node 和 Browserify/Webpack</li> <li>esm – 将软件包保存为 ES 模块文件，在现代浏览器中可以通过 <code>&lt;script type=module&gt;</code> 标签引入</li> <li>iife – 一个自动执行的功能，适合作为<code>&lt;script&gt;</code>标签。（如果要为应用程序创建一个捆绑包，您可能想要使用它，因为它会使文件大小变小。）</li> <li>umd – 通用模块定义，以amd，cjs 和 iife 为一体</li></ul> <h3 id="_2-3-external"><a href="#_2-3-external" class="header-anchor">#</a> 2.3. external</h3> <p>打包时不将三方包打进包中，而是继续以引用的方式存在</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    input<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+    output<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 打包完成之后结果要写入的文件</span>
+        file<span class="token operator">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 生成包的格式</span>
+        format<span class="token operator">:</span> <span class="token string">'esm'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 变量名 代表你的 iife/umd 包</span>
+        name<span class="token operator">:</span> <span class="token string">'myBundle'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    external<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token string">'loadsh'</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_2-4-plugin"><a href="#_2-4-plugin" class="header-anchor">#</a> 2.4. plugin</h3> <p>插件对象是一个数组，比如处理json文件的插件@rollup/plugin-json</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> json <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-json'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    input<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
+    output<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 打包完成之后结果要写入的文件</span>
+        file<span class="token operator">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 生成包的格式</span>
+        format<span class="token operator">:</span> <span class="token string">'esm'</span><span class="token punctuation">,</span>
+        <span class="token comment">// 变量名 代表你的 iife/umd 包</span>
+        name<span class="token operator">:</span> <span class="token string">'myBundle'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    external<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'react'</span><span class="token punctuation">,</span> <span class="token string">'loadsh'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    plugin<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_3-react组件库打包"><a href="#_3-react组件库打包" class="header-anchor">#</a> 3. react组件库打包</h2> <p>react项目使用jsx语法，以及需要将es6转化为es5代码，需要配置babel.编译出cjs,以及esm格式的包。</p> <blockquote><p>注意：此处打包格式为esm以及cjs,需在package.json中对应main(cjs格式)，module(esm格式)字段</p></blockquote> <h3 id="_3-1-rollup-config-json配置"><a href="#_3-1-rollup-config-json配置" class="header-anchor">#</a> 3.1. rollup.config.json配置</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// rollup.config.js</span>
+<span class="token keyword">import</span> path <span class="token keyword">from</span> <span class="token string">'path'</span><span class="token punctuation">;</span>
+<span class="token comment">// babel 转化代码</span>
+<span class="token keyword">import</span> babel <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-babel'</span><span class="token punctuation">;</span>
+<span class="token comment">// 解决node_modules三方包找不到问题</span>
+<span class="token keyword">import</span> resolve <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-node-resolve'</span><span class="token punctuation">;</span>
+<span class="token comment">// 解析cjs格式的包</span>
+<span class="token keyword">import</span> commonjs <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-commonjs'</span><span class="token punctuation">;</span>
+<span class="token comment">// 处理样式文件</span>
+<span class="token keyword">import</span> postcss <span class="token keyword">from</span> <span class="token string">'rollup-plugin-postcss'</span><span class="token punctuation">;</span>
+<span class="token comment">// 显示包的大小</span>
+<span class="token keyword">import</span> filesize <span class="token keyword">from</span> <span class="token string">'rollup-plugin-filesize'</span><span class="token punctuation">;</span>
+<span class="token comment">// 解决node api使用问题</span>
+<span class="token keyword">import</span> builtins <span class="token keyword">from</span> <span class="token string">'rollup-plugin-node-builtins'</span><span class="token punctuation">;</span>
+<span class="token comment">// 处理image图片为base64</span>
+<span class="token keyword">import</span> image <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-image'</span><span class="token punctuation">;</span>
+<span class="token comment">// css加前缀</span>
+<span class="token keyword">import</span> autoprefixer <span class="token keyword">from</span> <span class="token string">'autoprefixer'</span><span class="token punctuation">;</span>
+<span class="token comment">// 处理将文件作为数据或者es模块导入</span>
+<span class="token keyword">import</span> url <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-url'</span><span class="token punctuation">;</span>
+<span class="token comment">// ts编译插件</span>
+<span class="token keyword">import</span> typescript <span class="token keyword">from</span> <span class="token string">'rollup-plugin-typescript2'</span><span class="token punctuation">;</span>
+<span class="token comment">// 压缩代码</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> terser <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rollup-plugin-terser'</span><span class="token punctuation">;</span>
+<span class="token comment">// 处理json问题</span>
+<span class="token keyword">import</span> json <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-json'</span><span class="token punctuation">;</span>
+<span class="token comment">// 配置别名</span>
+<span class="token keyword">import</span> alias <span class="token keyword">from</span> <span class="token string">'@rollup/plugin-alias'</span><span class="token punctuation">;</span>
+<span class="token comment">// 拷贝文件</span>
+<span class="token keyword">import</span> copy <span class="token keyword">from</span> <span class="token string">'rollup-plugin-copy'</span><span class="token punctuation">;</span>
+<span class="token comment">// 打包前删除原有目录</span>
+<span class="token keyword">import</span> del <span class="token keyword">from</span> <span class="token string">'rollup-plugin-delete'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> pkg <span class="token keyword">from</span> <span class="token string">'./package.json'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getPath</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">_path</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> _path<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+    input<span class="token operator">:</span> <span class="token string">'./src/index.ts'</span><span class="token punctuation">,</span>
+    output<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            file<span class="token operator">:</span> pkg<span class="token punctuation">.</span>main<span class="token punctuation">,</span>
+            format<span class="token operator">:</span> <span class="token string">'cjs'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            file<span class="token operator">:</span> pkg<span class="token punctuation">.</span>module<span class="token punctuation">,</span>
+            format<span class="token operator">:</span> <span class="token string">'esm'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    context<span class="token operator">:</span> <span class="token string">'window'</span><span class="token punctuation">,</span>
+    external<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>dependencies <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">...</span>Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>pkg<span class="token punctuation">.</span>peerDependencies <span class="token operator">||</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token function">del</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">builtins</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">json</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">url</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">image</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">postcss</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.css'</span><span class="token punctuation">,</span> <span class="token string">'.less'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+            use<span class="token operator">:</span> <span class="token punctuation">[</span>
+                <span class="token punctuation">[</span>
+                    <span class="token string">'less'</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">{</span>
+                        javascriptEnabled<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+            extract<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            plugins<span class="token operator">:</span> <span class="token punctuation">[</span>autoprefixer<span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">alias</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            entries<span class="token operator">:</span> <span class="token punctuation">{</span>
+                src<span class="token operator">:</span> <span class="token string">'./src'</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">typescript</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            tsconfig<span class="token operator">:</span> <span class="token function">getPath</span><span class="token punctuation">(</span><span class="token string">'./tsconfig.json'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token comment">// 导入本地ts配置</span>
+            extensions<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'.ts'</span><span class="token punctuation">,</span> <span class="token string">'tsx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">babel</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            babelHelpers<span class="token operator">:</span> <span class="token string">'runtime'</span><span class="token punctuation">,</span>
+            exclude<span class="token operator">:</span> <span class="token string">'node_modules/**'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">resolve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">commonjs</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">terser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">copy</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            targets<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span> src<span class="token operator">:</span> <span class="token string">'src/public'</span><span class="token punctuation">,</span> dest<span class="token operator">:</span> <span class="token string">'dist/'</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        <span class="token function">filesize</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="_3-2-babel配置"><a href="#_3-2-babel配置" class="header-anchor">#</a> 3.2. babel配置</h3> <p>react组件需要编译jsx语法，以及es6语法, .babelrc文件配置如下</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;env&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;test&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token property">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/preset-env&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;@babel/preset-react&quot;</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;presets&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">[</span>
+            <span class="token string">&quot;@babel/preset-env&quot;</span><span class="token punctuation">,</span>
+            <span class="token punctuation">{</span>
+                <span class="token property">&quot;modules&quot;</span><span class="token operator">:</span> <span class="token boolean">false</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token string">&quot;@babel/preset-react&quot;</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;ignore&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;node_modules/**&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;plugins&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/plugin-transform-runtime&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/plugin-proposal-class-properties&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">&quot;loose&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token string">&quot;@babel/plugin-proposal-private-methods&quot;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> <span class="token property">&quot;loose&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h2 id="_4-遇到的问题"><a href="#_4-遇到的问题" class="header-anchor">#</a> 4. 遇到的问题</h2> <h3 id="_4-1-编译es6代码失效的问题"><a href="#_4-1-编译es6代码失效的问题" class="header-anchor">#</a> 4.1. 编译es6代码失效的问题</h3> <p>由于没注意tsconfig中的target为esnext,导致es6代码未编译，组件引入报错</p> <div class="language-js extra-class"><pre class="language-js"><code>Missing <span class="token keyword">class</span> <span class="token class-name">properties</span> transform
+</code></pre></div><h3 id="_4-2-iconfont-require文件不打包问题"><a href="#_4-2-iconfont-require文件不打包问题" class="header-anchor">#</a> 4.2. iconfont require文件不打包问题</h3> <p>由于解析不到require路径问题，此处暂用copy文件的方式将文件拷贝到dist文件中，使用rollup-plugin-copy插件</p></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-06-10
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-06-11
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/12/24/_24-linux%E5%85%8D%E5%AF%86%E7%99%BB%E9%99%86.html" class="post-link" data-v-4e23451f>
+      上一篇 : linux免密登陆
+    </a> <a href="/posts/2021/06/16/_27-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      下一篇 : 深拷贝实现
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><div class="post-nav-contents"><svg class="icon"><title>book</title><use xlink:href="#icon-book"></use></svg> <span>文章目录</span> <div class="post-nav-toc"><ul><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_1-为什么选用rollup">1. 为什么选用rollup</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_2-rollup基本概念">2. rollup基本概念</a><ul><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_2-1-入口">2.1. 入口</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_2-2-出口">2.2. 出口</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_2-3-external">2.3. external</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_2-4-plugin">2.4. plugin</a></li></ul></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_3-react组件库打包">3. react组件库打包</a><ul><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_3-1-rollup-config-json配置">3.1. rollup.config.json配置</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_3-2-babel配置">3.2. babel配置</a></li></ul></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_4-遇到的问题">4. 遇到的问题</a><ul><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_4-1-编译es6代码失效的问题">4.1. 编译es6代码失效的问题</a></li><li><a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#_4-2-iconfont-require文件不打包问题">4.2. iconfont require文件不打包问题</a></li></ul></li></ul></div></div> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2021/06/10/_10-%E5%9F%BA%E4%BA%8Erollup%E6%89%93%E5%8C%85react%E7%BB%84%E4%BB%B6.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/28.174bce0e.js" defer></script>
+  </body>
+</html>

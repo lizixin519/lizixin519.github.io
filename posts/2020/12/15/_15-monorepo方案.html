@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>monorepo方案 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/22.dbb1a96f.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/27.e46db41a.js"><link rel="prefetch" href="/assets/js/28.174bce0e.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/30.188d7400.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/33.18ad113a.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/35.9f348db9.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          monorepo方案
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-12-15
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2020-12-15
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/11/23/_13-cli%E5%BC%80%E5%8F%91.html" class="post-link" data-v-4e23451f>
+      上一篇 : cli开发流程
+    </a> <a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html" class="post-link" data-v-4e23451f>
+      下一篇 : webpack优化
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><h1 id="lerna、bit调研"><a href="#lerna、bit调研" class="header-anchor">#</a> lerna、bit调研</h1> <blockquote><p>对于维护过多个package来说，都会遇到一个问题：这些package是放在一个仓库里维护还是放在多个仓库里单独维护，数量较少的时候，多个仓库维护不会有太大问题，但是当package数量逐渐增多时，一些问题逐渐暴露出来,尤其是版本管理</p></blockquote> <h2 id="lerna-yarn-workspace"><a href="#lerna-yarn-workspace" class="header-anchor">#</a> lerna + yarn workspace</h2> <ul><li>yarn worksapce</li></ul> <h4 id="什么是yarn-workspace"><a href="#什么是yarn-workspace" class="header-anchor">#</a> 什么是yarn workspace</h4> <p>yarn workspace 是软件包体系结构的一种新方式, 相对yarn link来说，只影响工作区的依赖树，而不会影响整个系统
+各个库之间存在依赖，如a依赖于b，因此我们通常需要将b link到a的node_module里，一旦仓库很多的话，手动的管理这些link操作负担很大，因此需要自动化的link操作，按照拓扑排序将各个依赖进行link</p> <p>加入一个项目的目录结构如下：</p> <div class="language- extra-class"><pre class="language-text"><code>├── packages
+|   ├── a
+|   |   ├── package.json
+|   ├── b
+|   |   ├── package.json
+├── package.json
+</code></pre></div><h4 id="yarn-workspace-如何使用"><a href="#yarn-workspace-如何使用" class="header-anchor">#</a> yarn workspace 如何使用</h4> <p>在 package.json 文件中添加以下内容</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;private&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token comment">// 支持通配符   [package/*]</span>
+    <span class="token property">&quot;workspaces&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;package/a&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;package/b&quot;</span><span class="token punctuation">]</span> 
+<span class="token punctuation">}</span>
+</code></pre></div><p>// 在lerna.json内增加如下内容以在lerna内启用yarn workspaces</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;npmClient&quot;</span><span class="token operator">:</span> <span class="token string">&quot;yarn&quot;</span>
+  <span class="token property">&quot;useWorkspaces&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>lerna</li></ul> <h4 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h4> <div class="language-shell extra-class"><pre class="language-shell"><code>// 安装所有依赖项并链接任何交叉依赖项
+lerna bootstrap 
+//例: lerna bootstrap --npm-client <span class="token function">yarn</span> --use-workspaces
+// 在每个包中执行任意命令
+lerna <span class="token builtin class-name">exec</span>
+//例: lerna <span class="token builtin class-name">exec</span> <span class="token string">'yarn remove lodash'</span> // 删除
+lerna <span class="token function">add</span>        // 安装依赖，支持交叉依赖
+// lerna <span class="token function">add</span> packageA --scope<span class="token operator">=</span>packageB
+// 版本发布
+lerna changed    // 检查自上次发布以来哪些软件包已经更新
+lerna <span class="token function">diff</span>       // 自上次发布以来，对所有包或单个包进行区分
+lerna publish    // 发布版本
+// 常用
+lerna clean      // 清除项目中所有 node_modules
+lerna init       // 初始化项目
+lerna create     // 创建项目中的子package
+// 其它
+lerna run        // 在包含该脚本的包中运行 <span class="token function">npm</span> 脚本
+lerna info       // 查看信息
+lerna <span class="token function">import</span>     // 导入
+lerna <span class="token function">link</span>       // 软链
+lerna version    // 查看版本
+lerna <span class="token function">ls</span>         // 列出当前 lerna 项目中的公共包
+lerna updated    // 检查更新
+</code></pre></div><h4 id="模式"><a href="#模式" class="header-anchor">#</a> 模式</h4> <p>lerna有两种模式</p> <ol><li>fixed模式下，模块发布新版本时，都会升级到leran.json里编写的version字段</li> <li>independent模式下，模块发布新版本时，会逐个询问需要升级的版本号，基准版本为它自身的package.json，这样就避免了上述问题。</li></ol> <h4 id="lerna工作流"><a href="#lerna工作流" class="header-anchor">#</a> lerna工作流</h4> <ul><li>安装lerna</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code> <span class="token function">yarn</span> global <span class="token function">add</span> lerna 
+<span class="token comment"># 或</span>
+<span class="token function">npm</span> i -g lerna
+</code></pre></div><ul><li>初始化项目</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>lerna init
+</code></pre></div><p>执行初始化命令后会生成一个目录</p> <div class="language- extra-class"><pre class="language-text"><code>- packages(目录)
+- lerna.json(配置文件)
+- package.json(工程描述文件)
+</code></pre></div><p>在lerna.json中修改version字段 设置为独立模式</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;packages&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;packages/*&quot;</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;version&quot;</span><span class="token operator">:</span> <span class="token string">&quot;independent&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;npmClient&quot;</span><span class="token operator">:</span> <span class="token string">&quot;yarn&quot;</span><span class="token punctuation">,</span>
+    <span class="token property">&quot;useWorkspaces&quot;</span><span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">}</span>
+</code></pre></div><ul><li>在package中增加模块</li></ul> <div class="language- extra-class"><pre class="language-text"><code>执行
+ lerna create demo-ui
+ lerna create demo-core
+</code></pre></div><p>生成以下目录</p> <div class="language- extra-class"><pre class="language-text"><code>packages
+├─demo-ui
+|    ├─README.md
+|    ├─package-lock.json
+|    ├─package.json
+|    ├─lib
+|    |  └demo-ui.js
+|    ├─__tests__
+|    |     └demo-ui.test.js
+├─demo-core
+|     ├─README.md
+|     ├─package-lock.json
+|     ├─package.json
+|     ├─lib
+|     |  └demo-core.js
+|     ├─__tests__
+|     |     └demo-core.test.js
+</code></pre></div><p>当demo-ui 依赖demo-core执行</p> <div class="language- extra-class"><pre class="language-text"><code>lerna add demo-core --scope=demo-ui
+</code></pre></div><p>采取独立模式时 package中的包是独立版本的，可自行选择发布版本</p> <p>比如，当修改demo-ui的时候 demo-core并没有受影响， 所以只需要发布demo-ui即可。反之，当修改demo-core的时候，由于demo-ui依赖demo-core。此时lerna会检查到依赖。当执行</p> <div class="language- extra-class"><pre class="language-text"><code>lerna publish
+</code></pre></div><p>的时候，会同时升级demo-core和demo-ui的版本</p> <h4 id="优缺点"><a href="#优缺点" class="header-anchor">#</a> 优缺点</h4> <ul><li>优点：</li></ul> <ol><li>方便版本控制和本地调试</li> <li>方便changelog生成</li></ol> <ul><li>缺点：</li></ul> <ol><li>重构成本较高， 需对依赖手动进行分析</li> <li>仓库体积变大</li></ol> <h2 id="bit"><a href="#bit" class="header-anchor">#</a> bit</h2> <blockquote><p>Bit是一个工具，可以在不同项目 共享 与 同步 组件。</p></blockquote> <h4 id="bit的优势"><a href="#bit的优势" class="header-anchor">#</a> bit的优势</h4> <ul><li>使用Bit我们依旧可以保证应用程序的开发进度，同时提取可复用的组件以供重用</li> <li>公共组件、代码片段便捷发布</li> <li>公共组件、代码片段便捷导入</li> <li>公共组件、代码片段版本控制</li> <li>公共组件、代码片段快速索引及选用（实时编译、实时预览）</li> <li>公共组件、代码片段自动测试执行</li> <li>公共组件、代码片段文档生成</li> <li>结合配置CI自动完成NPM发布</li> <li>标准化开发规范</li></ul> <h4 id="环境准备"><a href="#环境准备" class="header-anchor">#</a> 环境准备</h4> <div class="language- extra-class"><pre class="language-text"><code>npm i -g bit-bin
+</code></pre></div><h4 id="bit常用命令"><a href="#bit常用命令" class="header-anchor">#</a> bit常用命令</h4> <div class="language- extra-class"><pre class="language-text"><code>start a working area
+  init               Create or reinitialize an empty Bit scope or reinitialize an existing one
+Develop components
+  tag                Record component changes and lock versions.
+  status             Show the working area component(s) status.
+  add                Add any subset of files to be tracked as a component(s).
+  untrack            Untrack a new component(s).
+  untag              Revert versions tagged for component(s).
+  move               Move a component to a different filesystem path.
+  checkout           Switch between component versions.
+  merge              Merge changes of different component versions.
+  diff               Show diff between components files.
+  install            install all component dependencies
+Collaborate on components
+  import             import components into your current working area.
+  export             export components to a remote scope.
+  remote             Manage set of tracked bit scope(s).
+  link               Generate symlinks for imported components absolute path resolution.
+  remove             Remove component(s) from your working area, or a remote scope.
+  deprecate          Deprecate a component
+  undeprecate        Undeprecate a deprecated component
+  eject              Replaces the components from the local scope with the corresponding packages.
+  pack               Create tar for npm publish
+Explore components
+  list               list components on a local or a remote scope.
+  graph              EXPERIMENTAL. generate an image file with the dependencies graph.
+Workspace commands
+  config             global config management
+  clear-cache        clears Bit's cache from current working machine
+  scope-config       local scope config management
+  login              log the CLI into bit.dev
+  logout             log the CLI out of bit.dev
+  doctor             diagnose a bit workspace
+View components
+  show               show component overview.
+  log                show components(s) version history.
+component environment operations
+  test               test any set of components with configured tester (component tester or as defined in bit.json)
+  build              build any set of components with configured compiler (component compiler or as defined in bit.json)
+  watch              watch a set of components
+</code></pre></div><h4 id="bit工作流"><a href="#bit工作流" class="header-anchor">#</a> bit工作流</h4> <ol><li>项目初始化</li></ol> <div class="language- extra-class"><pre class="language-text"><code>bit init
+</code></pre></div><ol start="2"><li>导出组件</li></ol> <p>在项目中编写组件完成后, 导出组件</p> <div class="language- extra-class"><pre class="language-text"><code>bit add [files] --id [namespace]/[id]
+bit tag [id] [version]
+bit export owner.collection/[namespace]/[id]
+</code></pre></div><ol start="3"><li>引入组件</li></ol> <p>在项目中使用bit组件时 也需要初始化bit工作区。</p> <div class="language- extra-class"><pre class="language-text"><code>bit import owner.collection/[namespace]/[id]
+</code></pre></div><ol start="4"><li>修改、合并、再导出</li></ol> <div class="language- extra-class"><pre class="language-text"><code>bit import --merge ours
+bit import owner.collection/[namespace]/[id][@version] --merge manual
+// 手动指定版本
+bit tag owner.collection/[namespace]/[id] [version]
+// 自动加一：--patch or --minor or --major
+bit tag owner.collection/[namespace]/[id] --patch
+bit export owner.collection
+</code></pre></div><ol start="5"><li>版本管理</li></ol> <p>当对存储库中的一个组件进行更改时，Bit将自动跟踪更改并识别将其用作依赖项的其他组件。然后，如果运行，bit status将看到所有组件，因为它们的依赖关系已被修改，这些组件已自动修改。无需手动处理package.json文件即可管理对依赖项的更改</p> <h4 id="优缺点-2"><a href="#优缺点-2" class="header-anchor">#</a> 优缺点</h4> <ul><li>优点：</li></ul> <ol><li>重构成本低</li> <li>自动管理仓库中的所有依赖关系，包括对组件依赖关系的更改，并根据需要更新所有组件。没有其他package.json文件可以维护或更新。</li> <li>也可以通过导入任何组件，进行更改并向原始存储库发布更新来从任何其他存储库中发布组件更新。</li></ol> <ul><li>缺点：</li></ul> <ol><li>文档较少，遇到问题可能不好解决</li> <li>比较适合以组件为单位的库</li></ol></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-12-15
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2020-12-15
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/11/23/_13-cli%E5%BC%80%E5%8F%91.html" class="post-link" data-v-4e23451f>
+      上一篇 : cli开发流程
+    </a> <a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html" class="post-link" data-v-4e23451f>
+      下一篇 : webpack优化
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><div class="post-nav-contents"><svg class="icon"><title>book</title><use xlink:href="#icon-book"></use></svg> <span>文章目录</span> <div class="post-nav-toc"><ul><li><a href="/posts/2020/12/15/_15-monorepo%E6%96%B9%E6%A1%88.html#lerna-yarn-workspace">lerna + yarn workspace</a></li><li><a href="/posts/2020/12/15/_15-monorepo%E6%96%B9%E6%A1%88.html#bit">bit</a></li></ul></div></div> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2020/12/15/_15-monorepo%E6%96%B9%E6%A1%88.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/22.dbb1a96f.js" defer></script>
+  </body>
+</html>

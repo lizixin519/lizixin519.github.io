@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>实现 mini-react(三)：普通节点 render 方法实现 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/35.9f348db9.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/22.dbb1a96f.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/27.e46db41a.js"><link rel="prefetch" href="/assets/js/28.174bce0e.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/30.188d7400.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/33.18ad113a.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          实现 mini-react(三)：普通节点 render 方法实现
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-10-29
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/10/29/_30-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E7%BB%84%E4%BB%B6render%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      上一篇 : 实现 mini-react(四)：组件 render 方法实现
+    </a> <a href="/posts/2021/10/29/_29-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.html" class="post-link" data-v-4e23451f>
+      下一篇 : 实现 mini-react(一)：创建项目
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><p>实现 mini-react(三)：普通节点 render 方法实现</p> <p>前一章实现了 createElement 方法, 这一节我们来实现 render 方法。</p> <p>react 中通过 render 方法将 VirtualDOM 转化成真实 DOM，渲染到页面上。下面我们来实现下 render 方法。</p> <p>大致思路就是把虚拟 DOM 通过方法转化为真实 DOM 再 append 到指定的 node 节点中。</p> <p>首先我们需要区分下传入的 virtualDOM 是组件还是普通的 node 节点。不论是类组件还是函数组件，type 类型都是 function。而普通的 node 节点 type 类型则是 string.所以我们可以通过 type 类型来区分组件和普通 node 节点。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// 不论是类组件还是函数组件 type类型都是function</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">isFunction</span><span class="token punctuation">(</span><span class="token parameter">virtualDOM</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> virtualDOM <span class="token operator">&amp;&amp;</span> <span class="token keyword">typeof</span> virtualDOM<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>先来实现普通节点的情况，此时要考虑该节点是否是文本类型，如果是文本类型的话，则调用<code>document.createTextNode</code>方法创建文本节点。如果是普通节点类型，则调用<code>document.createElement</code>
+我们来定义一个函数来实现转化虚拟 DOM 的功能</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//mountElement.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">mountElement</span><span class="token punctuation">(</span><span class="token parameter">virtualDOM<span class="token punctuation">,</span> container</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> handleElement <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">isFunction</span><span class="token punctuation">(</span>virtualDOM<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        handleElement <span class="token operator">=</span> <span class="token function">mountDOMElement</span><span class="token punctuation">(</span>virtualDOM<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    container<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>handleElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">//mountDOMElement.js 这个方法之后会复用，所以单独提出来一个函数</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">mountDOMElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">let</span> handleElement <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+    <span class="token comment">// 文本节点</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>virtualDOM<span class="token punctuation">.</span>type <span class="token operator">===</span> <span class="token string">'text'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        handleElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>virtualDOM<span class="token punctuation">.</span>props<span class="token punctuation">.</span>textContent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        handleElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span>virtualDOM<span class="token punctuation">.</span>type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 递归的实现子节点的创建</span>
+    virtualDOM<span class="token punctuation">.</span>children<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">child</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 调用这个mountElement进行递归，是因为要判断子节点是否是组件。</span>
+        <span class="token function">mountElement</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> handleElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> handleElement<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">// render.js</span>
+<span class="token comment">// 先不考虑diff</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">virtualDOM<span class="token punctuation">,</span> container</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 用来接受真实的dom</span>
+    <span class="token comment">// 最后将节点append到指定的容器中</span>
+    <span class="token function">mountElement</span><span class="token punctuation">(</span>virtualDOM<span class="token punctuation">,</span> container<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>现在我们以及基本实现了 render 方法渲染普通节点元素，此时还有一个问题，就是我们标签的属性并没有添加上，所以我们再新建一个文件，来为元素添加属性。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token comment">/**
+ * @description: 为元素添加属性
+ * @param {*}
+ * @return {*}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">updateNodeElement</span><span class="token punctuation">(</span><span class="token parameter">newElement<span class="token punctuation">,</span> virtualDOM</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> newProps <span class="token operator">=</span> virtualDOM<span class="token punctuation">.</span>props<span class="token punctuation">;</span>
+    Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>newProps<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">propName</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token keyword">const</span> newPropsValue <span class="token operator">=</span> newProps<span class="token punctuation">[</span>propName<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// / 判断属性是否是事件属性 例如onClick转化为click,通过addEventListener来进行事件绑定</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>propName<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">'on'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">const</span> eventName <span class="token operator">=</span> propName<span class="token punctuation">.</span><span class="token function">toLowerCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            newElement<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span>eventName<span class="token punctuation">,</span> newPropsValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>propName <span class="token operator">===</span> <span class="token string">'value'</span> <span class="token operator">||</span> propName <span class="token operator">===</span> <span class="token string">'selected'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 表单元素的属性</span>
+            newElement<span class="token punctuation">[</span>propName<span class="token punctuation">]</span> <span class="token operator">=</span> newPropsValue<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>propName <span class="token operator">!==</span> <span class="token string">'children'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>propName <span class="token operator">===</span> <span class="token string">'className'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                newElement<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span><span class="token string">'class'</span><span class="token punctuation">,</span> newPropsValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                newElement<span class="token punctuation">.</span><span class="token function">setAttribute</span><span class="token punctuation">(</span>propName<span class="token punctuation">,</span> newPropsValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>至此普通节点的 render 方法基础已经实现，下一节我们将介绍组件的 render 转化。</p></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-10-29
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/10/29/_30-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E7%BB%84%E4%BB%B6render%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0.html" class="post-link" data-v-4e23451f>
+      上一篇 : 实现 mini-react(四)：组件 render 方法实现
+    </a> <a href="/posts/2021/10/29/_29-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.html" class="post-link" data-v-4e23451f>
+      下一篇 : 实现 mini-react(一)：创建项目
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><!----> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2021/10/29/_30-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E6%99%AE%E9%80%9A%E8%8A%82%E7%82%B9render%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/35.9f348db9.js" defer></script>
+  </body>
+</html>

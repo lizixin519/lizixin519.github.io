@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>实现 mini-react(二)：createElement方法实现 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/33.18ad113a.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/22.dbb1a96f.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/27.e46db41a.js"><link rel="prefetch" href="/assets/js/28.174bce0e.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/30.188d7400.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/35.9f348db9.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          实现 mini-react(二)：createElement方法实现
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-10-29
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/10/29/_29-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.html" class="post-link" data-v-4e23451f>
+      上一篇 : 实现 mini-react(一)：创建项目
+    </a> <!----></section></section> <article class="main-div"><div class="post-content content content__default"><p>实现 mini-react(二)：createElement 方法实现</p> <h3 id="_1-jsx-语法"><a href="#_1-jsx-语法" class="header-anchor">#</a> 1. jsx 语法</h3> <p>在 react 配合 jsx 语法使用，通过 babel 的转译将 jsx 转译为浏览器可识别的 dom 元素。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>p<span class="token operator">&gt;</span>test<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+</code></pre></div><p>上述代码经过编译会编译成下述结构</p> <div class="language-js extra-class"><pre class="language-js"><code>React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> React<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'p'</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>可以看到 jsx 语法被 React.createElement 转译。
+可以通过 bebel 在线编译: <a href="https://babeljs.io/repl" target="_blank" rel="noopener noreferrer">bebel 在线编译<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="_2-实现-react-createelement"><a href="#_2-实现-react-createelement" class="header-anchor">#</a> 2. 实现 react.createElement</h3> <p>从上述代码中可以看到，createElement 有三个参数</p> <ul><li>type: 元素的类型</li> <li>props: 元素的属性</li> <li>children: 子元素集合</li></ul> <p>我们创建一个项目来测试 mini-react,</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token operator">...</span>children</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">,</span>
+        props<span class="token punctuation">,</span>
+        children<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这样就可已得到初步的结果，</p> <div class="language- extra-class"><pre class="language-text"><code>&lt;div className=&quot;container&quot;&gt;
+    &lt;p&gt;我是一段文字&lt;/p&gt;
+    &lt;div&gt;
+        &lt;p&gt;我是嵌套的文字&lt;/p&gt;
+    &lt;/div&gt;
+    {false &amp;&amp; &lt;div&gt;我不应该展示出来&lt;/div&gt;}
+    {true &amp;&amp; &lt;div&gt;我应该展示出来&lt;/div&gt;}
+&lt;/div&gt;
+</code></pre></div><p>结果被编译成了下述结构</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    children<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token number">0</span><span class="token operator">:</span>
+        children<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'我是一段文字'</span><span class="token punctuation">]</span>
+        props<span class="token operator">:</span> <span class="token keyword">null</span>
+        type<span class="token operator">:</span> <span class="token string">&quot;p&quot;</span>
+        <span class="token number">1</span><span class="token operator">:</span> <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span> props<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> children<span class="token operator">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+        <span class="token number">2</span><span class="token operator">:</span> <span class="token boolean">false</span>
+        <span class="token number">3</span><span class="token operator">:</span> <span class="token punctuation">{</span>type<span class="token operator">:</span> <span class="token string">'div'</span><span class="token punctuation">,</span> props<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span> children<span class="token operator">:</span> <span class="token function">Array</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    props<span class="token operator">:</span> <span class="token punctuation">{</span>className<span class="token operator">:</span> <span class="token string">'container'</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">&quot;div&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>这块我们发现有几个问题</p> <ol><li>当子元素是文字时直接生成的是一段文本</li> <li>当值为 boolean 值的时候直接为 false</li></ol> <p>我们在原有的基础上稍加改动</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token operator">...</span>children</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> handleChildren <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token operator">...</span>children<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reduce</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">result<span class="token punctuation">,</span> child</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 判断child是否为boolean型且不能为空</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>child <span class="token operator">!==</span> <span class="token boolean">false</span> <span class="token operator">&amp;&amp;</span> child <span class="token operator">!==</span> <span class="token boolean">true</span> <span class="token operator">&amp;&amp;</span> child <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 判断child是否为文本节点</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>child <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment">// 如果child为文本节点，则重新调用createElement方法，将文本转化为text类型的对象</span>
+                result<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span> textContent<span class="token operator">:</span> child <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">,</span>
+        props<span class="token punctuation">,</span>
+        children<span class="token operator">:</span> handleChildren<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>此时我们在看输出则已经恢复正常。</p> <p>我们在使用 react 开发的时候，父节点可以通过 props.children 获取子节点的数据，所以我们需要在返回值上重新赋值给 props</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">createElement</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> <span class="token operator">...</span>children</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token operator">...</span>
+    <span class="token operator">...</span>
+    <span class="token keyword">return</span> <span class="token punctuation">{</span>
+        type<span class="token punctuation">,</span>
+        props<span class="token operator">:</span> <span class="token punctuation">{</span>children<span class="token operator">:</span> handleChildren<span class="token punctuation">,</span> <span class="token operator">...</span>props<span class="token punctuation">}</span><span class="token punctuation">,</span>
+        children<span class="token operator">:</span> handleChildren<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>至此我们的 createElement 方法已经实现完成。下一节我们会实现 render 方法。</p></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2021-10-29
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2021/10/29/_29-%E5%AE%9E%E7%8E%B0mini-react%E4%B9%8B%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE.html" class="post-link" data-v-4e23451f>
+      上一篇 : 实现 mini-react(一)：创建项目
+    </a> <!----></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><!----> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2021/10/29/_29-%E5%AE%9E%E7%8E%B0-mini-react%E4%B9%8Bcreateelement%E6%96%B9%E6%B3%95%E5%AE%9E%E7%8E%B0.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/33.18ad113a.js" defer></script>
+  </body>
+</html>

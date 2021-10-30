@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>webpack优化 | 李紫鑫</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/assest/image/logo.png">
+    <meta name="description" content="懒是第一生产力">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
+    <link rel="preload" href="/assets/css/0.styles.a7ccb701.css" as="style"><link rel="preload" href="/assets/js/app.1c78b9e6.js" as="script"><link rel="preload" href="/assets/js/7.ea18eff5.js" as="script"><link rel="preload" href="/assets/js/27.e46db41a.js" as="script"><link rel="prefetch" href="/assets/js/1.33633b0f.js"><link rel="prefetch" href="/assets/js/10.11b98e86.js"><link rel="prefetch" href="/assets/js/11.7d933060.js"><link rel="prefetch" href="/assets/js/12.b6692aaa.js"><link rel="prefetch" href="/assets/js/13.85e3e167.js"><link rel="prefetch" href="/assets/js/14.6c1f3bb0.js"><link rel="prefetch" href="/assets/js/15.7d90afc1.js"><link rel="prefetch" href="/assets/js/16.cfc740e0.js"><link rel="prefetch" href="/assets/js/17.9ca1ea43.js"><link rel="prefetch" href="/assets/js/18.204c80d7.js"><link rel="prefetch" href="/assets/js/19.3b90dd2d.js"><link rel="prefetch" href="/assets/js/20.af3d89f7.js"><link rel="prefetch" href="/assets/js/21.a5711ddd.js"><link rel="prefetch" href="/assets/js/22.dbb1a96f.js"><link rel="prefetch" href="/assets/js/23.241d8060.js"><link rel="prefetch" href="/assets/js/24.5481ef9a.js"><link rel="prefetch" href="/assets/js/25.9fb4104b.js"><link rel="prefetch" href="/assets/js/26.c57a8bc9.js"><link rel="prefetch" href="/assets/js/28.174bce0e.js"><link rel="prefetch" href="/assets/js/29.c8678e58.js"><link rel="prefetch" href="/assets/js/3.bb8a5660.js"><link rel="prefetch" href="/assets/js/30.188d7400.js"><link rel="prefetch" href="/assets/js/31.ff5ab4fe.js"><link rel="prefetch" href="/assets/js/32.33dbe4d1.js"><link rel="prefetch" href="/assets/js/33.18ad113a.js"><link rel="prefetch" href="/assets/js/34.b874a3c1.js"><link rel="prefetch" href="/assets/js/35.9f348db9.js"><link rel="prefetch" href="/assets/js/36.265eacdb.js"><link rel="prefetch" href="/assets/js/4.4d9567a4.js"><link rel="prefetch" href="/assets/js/5.74660b3f.js"><link rel="prefetch" href="/assets/js/6.7960d620.js"><link rel="prefetch" href="/assets/js/8.0123ef78.js"><link rel="prefetch" href="/assets/js/9.4e813811.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.a7ccb701.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div id="vuepress-theme-meteorlxy"><header class="header" data-v-7a046aea><div data-v-e4145d0a data-v-7a046aea><nav class="navbar" data-v-e4145d0a><div class="container" data-v-e4145d0a><a href="/" class="router-link-active" data-v-e4145d0a><span class="navbar-site-name" data-v-e4145d0a>
+          李紫鑫
+        </span></a> <div class="navbar-toggler" data-v-e4145d0a><svg class="icon" style="font-size:1.2em;" data-v-e4145d0a data-v-e4145d0a><title data-v-e4145d0a data-v-e4145d0a>menu</title><use xlink:href="#icon-menu" data-v-e4145d0a data-v-e4145d0a></use></svg></div> <div class="navbar-links" data-v-e4145d0a><a href="/" class="navbar-link" data-v-e4145d0a>
+            首页
+          </a><a href="/posts/" class="navbar-link router-link-active" data-v-e4145d0a>
+            文章
+          </a></div></div></nav> <div class="navbar-holder" style="display:none;" data-v-e4145d0a></div></div> <div class="banner" data-v-98d6aa8c data-v-7a046aea data-v-7a046aea><div class="container" data-v-98d6aa8c><div class="center" data-v-98d6aa8c><h1 data-v-98d6aa8c data-v-7a046aea>
+          webpack优化
+        </h1></div></div></div></header> <div class="container clearfix show-aside" data-v-4dd605a1 data-v-4dd605a1><main class="main" data-v-4dd605a1><div class="post" data-v-4dd605a1 data-v-4dd605a1><section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-12-24
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/12/15/_15-monorepo%E6%96%B9%E6%A1%88.html" class="post-link" data-v-4e23451f>
+      上一篇 : monorepo方案
+    </a> <a href="/posts/2020/12/24/_07-bit%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E5%BB%BA%E8%AE%AE.html" class="post-link" data-v-4e23451f>
+      下一篇 : bit组件开发建议
+    </a></section></section> <article class="main-div"><div class="post-content content content__default"><p>webpack 优化</p> <h2 id="使用-webpack-bundle-analyzer-分析"><a href="#使用-webpack-bundle-analyzer-分析" class="header-anchor">#</a> 使用 webpack-bundle-analyzer 分析</h2> <ol><li>安装</li></ol> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">yarn</span> <span class="token function">add</span> webpack-bundle-analyzer -D
+</code></pre></div><ol start="2"><li>配置
+需要在 webpack.config.json 中配置插件</li></ol> <div class="language- extra-class"><pre class="language-text"><code>const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+</code></pre></div><p>由于该插件需要依赖 build 但在部署时候不需要运行，故需要添加一个变量需要执行该插件</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+    <span class="token property">&quot;scripts&quot;</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">&quot;analyz&quot;</span><span class="token operator">:</span> <span class="token string">&quot;cross-env NODE_ENV=production IS_ANALYZ=true npm run build&quot;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>在 webpack 配置文件中需要添加</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> NPM_CONFIG_FlAG <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NPM_CONFIG_FlAG<span class="token punctuation">;</span>
+<span class="token constant">IS_ANALYZ</span> <span class="token operator">===</span> <span class="token string">'true'</span> <span class="token operator">&amp;&amp;</span> <span class="token keyword">new</span> <span class="token class-name">BundleAnalyzerPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+</code></pre></div><p>配置完成后运行</p> <div class="language- extra-class"><pre class="language-text"><code>yarn analyz
+</code></pre></div><p>就会在浏览器打开项目打包分析页面</p> <h2 id="splitchunks-分包优化"><a href="#splitchunks-分包优化" class="header-anchor">#</a> splitchunks 分包优化</h2> <p>在 create-react-app 项目中默认配置为</p> <div class="language-js extra-class"><pre class="language-js"><code>splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+    name<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    chunk<span class="token operator">:</span> <span class="token string">&quot;all&quot;</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>分包优化需要针对不同的项目做不同的优化</p> <p>大体思路如下</p> <ol><li>对于单元应用首次加载时希望加载的包越小越好,针对 react 来说，react,react-dom 等库变动量很小，可以选择把这些库打包到一个 chunk 中 配合缓存策略，也能使浏览器命中缓存，提高加载性能</li> <li>ui 组件库 相对与 react 基础库来说，这些代码可能需要的频率很高，而且更新的次数不会很多，所以也建议单独打一个 chunk</li> <li>对第三方库以及公共组件分为：
+<ol><li>使用频率高
+对使用频率高的库，比如 loadsh,antd 选择可以达到同一个包中,这样可以减少请求次数</li> <li>使用频率低
+对于低频率使用的库，比如 jsZip,echart,bizchart 可以选择每一个包单独达成一个 chunk，这样只有在依赖这些库页面记载时才会加载，减少了很多页面加载的资源大小</li></ol></li> <li>业务代码打包的方式选择使用路由懒加载的方式,按需加载，一个页面就是一个 chunk 包</li> <li>在考虑包大小的同时，要考虑包多少的问题，不能过分拆包，从而导致请求次数过多</li></ol> <p>配置如下</p> <div class="language-js extra-class"><pre class="language-js"><code>splitChunks<span class="token operator">:</span> <span class="token punctuation">{</span>
+    chunk<span class="token operator">:</span> <span class="token string">&quot;all&quot;</span><span class="token punctuation">,</span> <span class="token comment">//打包方式</span>
+    name<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    minSize<span class="token operator">:</span> <span class="token number">30000</span><span class="token punctuation">,</span> <span class="token comment">//文件最小打包体积，单位byte，默认30000</span>
+    minChunks<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">//最少引入的次数</span>
+    cacheGroups<span class="token operator">:</span> <span class="token punctuation">{</span>
+        base<span class="token operator">:</span> <span class="token punctuation">{</span> <span class="token comment">// 页面首次加载依赖的包</span>
+            name<span class="token operator">:</span> <span class="token string">'chunk-base'</span><span class="token punctuation">,</span>
+            test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+            priority<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>
+            chunks<span class="token operator">:</span> <span class="token string">'initial'</span><span class="token punctuation">,</span> <span class="token comment">// 只打包初始时依赖的包</span>
+            enforce<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        ui<span class="token operator">:</span> <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">'chunk-ui'</span><span class="token punctuation">,</span>
+            test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]antd</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+            priority<span class="token operator">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+            chunks<span class="token operator">:</span> <span class="token string">'all'</span><span class="token punctuation">,</span> <span class="token comment">// 只打包初始时依赖的包</span>
+            enforce<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        commons<span class="token operator">:</span> <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">&quot;chunk-comomns&quot;</span><span class="token punctuation">,</span>
+            test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]src[\\/]components</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+            minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token comment">// 最小共用次数</span>
+            priority<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+            reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        defalut<span class="token operator">:</span> <span class="token punctuation">{</span>
+            name<span class="token operator">:</span> <span class="token string">&quot;chunk-defalut&quot;</span><span class="token punctuation">,</span>
+            test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">[\\/]node_modules[\\/]</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+            minChunks<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+            priority<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">,</span>
+            reuseExistingChunk<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>分包策略使用得当的话可以减少包的大小，提高首次加载速度，优化资源加载等等</p> <h2 id="按需加载"><a href="#按需加载" class="header-anchor">#</a> 按需加载</h2> <p>webpack 提供 tree-shaking 支持，但是只针对 es 模块，有一些库的按需加载需要依赖自己实现，下面以 bizcharts 为例,借助 babel-plugin-import 插件来实现按需加载</p> <ol><li>安装</li></ol> <div class="language- extra-class"><pre class="language-text"><code>yarn add babel-plugin-import -D
+</code></pre></div><ol start="2"><li>在 webpack 中配置
+babel-plugin-import 实现按需加载的原理如下</li></ol> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> Axis <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'bizcharts'</span><span class="token punctuation">;</span>
+<span class="token comment">// 转化为下面</span>
+<span class="token keyword">import</span> Axis <span class="token keyword">from</span> <span class="token string">'bizcharts/lib/components/Axis'</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-js extra-class"><pre class="language-js"><code><span class="token punctuation">{</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|mjs|jsx|ts|tsx)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    include<span class="token operator">:</span> paths<span class="token punctuation">.</span>appSrc<span class="token punctuation">,</span>
+    loader<span class="token operator">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'babel-loader'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span> <span class="token punctuation">{</span>
+        customize<span class="token operator">:</span> require<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span><span class="token string">'babel-preset-react-app/webpack-overrides'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        plugins<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">[</span>
+                <span class="token string">'import'</span><span class="token punctuation">,</span>
+                <span class="token punctuation">{</span>
+                    libraryName<span class="token operator">:</span> <span class="token string">'bizcharts'</span><span class="token punctuation">,</span>
+                    camel2DashComponentName<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+                    <span class="token function-variable function">customName</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                        <span class="token keyword">let</span> configObj <span class="token operator">=</span> _<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>bizChartsConfig<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">item</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                            <span class="token keyword">return</span> _<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>item<span class="token punctuation">.</span>includes<span class="token punctuation">,</span> name<span class="token punctuation">)</span> <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">bizcharts/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>configObj<span class="token punctuation">.</span>path<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+                <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>Boolean<span class="token punctuation">)</span><span class="token punctuation">,</span>
+        cacheDirectory<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        cacheCompression<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        compact<span class="token operator">:</span> isEnvProduction<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span>
+</code></pre></div><p>由于 bizcharts 比较特殊，组件分布在 lib 下面不同的目录下，所以需要手动维护一份文件，来表明路径组件关系</p> <div class="language-js extra-class"><pre class="language-js"><code>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'lib/g-components'</span><span class="token punctuation">,</span>
+        includes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'GComponents'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'lib/geometry'</span><span class="token punctuation">,</span>
+        includes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'Line'</span><span class="token punctuation">,</span> <span class="token string">'Interval'</span><span class="token punctuation">,</span> <span class="token string">'Point'</span><span class="token punctuation">,</span> <span class="token string">'Area'</span><span class="token punctuation">,</span> <span class="token string">'Polygon'</span><span class="token punctuation">,</span> <span class="token string">'Schema'</span><span class="token punctuation">,</span> <span class="token string">'Path'</span><span class="token punctuation">,</span> <span class="token string">'Heatmap'</span><span class="token punctuation">,</span> <span class="token string">'Edge'</span><span class="token punctuation">,</span> <span class="token string">'Geom'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'lib/components'</span><span class="token punctuation">,</span>
+        includes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'Chart'</span><span class="token punctuation">,</span> <span class="token string">'View'</span><span class="token punctuation">,</span> <span class="token string">'Axis'</span><span class="token punctuation">,</span> <span class="token string">'Annotation'</span><span class="token punctuation">,</span> <span class="token string">'Coordinate'</span><span class="token punctuation">,</span> <span class="token string">'Effects'</span><span class="token punctuation">,</span> <span class="token string">'Legend'</span><span class="token punctuation">,</span> <span class="token string">'Tooltip'</span><span class="token punctuation">,</span> <span class="token string">'Interaction'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+        path<span class="token operator">:</span> <span class="token string">'lib/plots'</span><span class="token punctuation">,</span>
+        includes<span class="token operator">:</span> <span class="token punctuation">[</span>
+            <span class="token string">'CalendarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'BulletChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'BubbleChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'ScatterChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'WaterfallChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'DonutChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'HistogramChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'LiquidChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'RadarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'GroupedRoseChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'StackedRoseChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'FunnelChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'RoseChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'WordCloudChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'HeatmapChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'DensityHeatmapChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'PieChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'PercentStackedColumnChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'RangeColumnChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'StackedColumnChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'GroupedColumnChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'ColumnChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'PercentStackedAreaChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'StackedAreaChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'AreaChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'RangeBarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'PercentStackedBarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'GroupedBarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'StackedBarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'BarChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'StepLineChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'TreemapChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'LineChart'</span><span class="token punctuation">,</span>
+            <span class="token string">'GaugeChart'</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre></div><ol start="3"><li>注意</li></ol> <p>需要使用原先 bizcharts 上的工具函数，请加载'bizcharts/lib/core' 具体有：
+G2、Animate、Shape、setTheme、track、PathUtil、Util</p> <p>在使用时需要手动引入</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> bizUtil <span class="token keyword">from</span> <span class="token string">'bizcharts/lib/core'</span><span class="token punctuation">;</span>
+bizUtil<span class="token punctuation">.</span><span class="token function">registerShape</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="打包速度优化"><a href="#打包速度优化" class="header-anchor">#</a> 打包速度优化</h2> <ol><li>加快查找速度
+resolve.alias 来减少查找过程
+resolve.modules 解析模块时应该搜索的目录
+resolve.extensions 文件扩展名 （配置时可将常用的扩展名放在前面，加快匹配速度）</li> <li>多线程打包 thread-loader 在性能消耗高的 loader 中使用可提高打包速度，如 babel-loader</li> <li>dll 技术</li></ol> <h2 id="其他"><a href="#其他" class="header-anchor">#</a> 其他</h2> <p>由于公司项目私有化部署的关系，有很多优化方案不能使用，比如大型库外链 externals 配置，大型库使用 CDN 的形式加载</p></div></article> <section class="post-meta main-div" data-v-4e23451f><section class="post-date clearfix" data-v-4e23451f><span class="create-date" data-v-4e23451f>
+      发布时间 : 2020-12-24
+    </span> <span class="update-date" data-v-4e23451f>
+      最后修改 : 2021-10-30
+    </span></section> <section class="post-links" data-v-4e23451f><a href="/posts/2020/12/15/_15-monorepo%E6%96%B9%E6%A1%88.html" class="post-link" data-v-4e23451f>
+      上一篇 : monorepo方案
+    </a> <a href="/posts/2020/12/24/_07-bit%E7%BB%84%E4%BB%B6%E5%BC%80%E5%8F%91%E5%BB%BA%E8%AE%AE.html" class="post-link" data-v-4e23451f>
+      下一篇 : bit组件开发建议
+    </a></section></section> <div id="post-comments" class="main-div"><!----></div></div></main> <aside class="aside" data-v-4dd605a1><div class="info-card main-div" data-v-9d847660 data-v-4dd605a1><div class="info-card-header" data-v-9d847660><img src="/assest/image/logo.png" alt="李紫鑫" class="info-avatar" data-v-9d847660></div> <div class="info-card-body" data-v-9d847660><section class="info-nickname" data-v-9d847660>
+      李紫鑫
+    </section> <section class="info-desc" data-v-9d847660>信奉自由</section> <section class="info-contact" data-v-9d847660><section data-v-9d847660><span title="beijing, China" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>beijing, China</title><use xlink:href="#icon-location" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          beijing, China
+        </span></span></section> <!----> <section data-v-9d847660><a href="mailto:lizixin519@163.com" title="lizixin519@163.com" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>lizixin519@163.com</title><use xlink:href="#icon-email" data-v-9d847660 data-v-9d847660></use></svg><span class="info-text" data-v-9d847660 data-v-9d847660>
+          lizixin519@163.com
+        </span></a></section></section></div> <div class="info-card-footer" data-v-9d847660><section class="info-sns clearfix" data-v-9d847660><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-9d847660><span title="GitHub: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-9d847660 data-v-9d847660></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-9d847660><span title="掘金: lizixin" class="sns-icon" data-v-9d847660 data-v-9d847660><svg class="icon" style="font-size:1.5em;" data-v-9d847660 data-v-9d847660><title data-v-9d847660 data-v-9d847660>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-9d847660 data-v-9d847660></use></svg></span></a></section></div></div> <div class="post-nav-card main-div" style="position:relative;top:0;width:0px;" data-v-4dd605a1><div class="post-nav-contents"><svg class="icon"><title>book</title><use xlink:href="#icon-book"></use></svg> <span>文章目录</span> <div class="post-nav-toc"><ul><li><a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#使用-webpack-bundle-analyzer-分析">使用 webpack-bundle-analyzer 分析</a></li><li><a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#splitchunks-分包优化">splitchunks 分包优化</a></li><li><a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#按需加载">按需加载</a></li><li><a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#打包速度优化">打包速度优化</a></li><li><a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#其他">其他</a></li></ul></div></div> <div class="post-nav-comments"><svg class="icon"><title>comment</title><use xlink:href="#icon-comment"></use></svg> <a href="/posts/2020/12/24/_19-webpack%E4%BC%98%E5%8C%96.html#post-comments">
+      评论
+    </a></div></div></aside></div> <footer class="footer" data-v-1375e54c><p class="footer-sns-links" data-v-1375e54c><a href="https://github.com/lizixin519" target="_blank" class="sns-link" data-v-1375e54c><span title="GitHub: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>GitHub: lizixin</title><use xlink:href="#icon-github" data-v-1375e54c data-v-1375e54c></use></svg></span></a><a href="https://juejin.im/user/254742430757645" target="_blank" class="sns-link" data-v-1375e54c><span title="掘金: lizixin" class="sns-icon" data-v-1375e54c data-v-1375e54c><svg class="icon" style="font-size:25px;" data-v-1375e54c data-v-1375e54c><title data-v-1375e54c data-v-1375e54c>掘金: lizixin</title><use xlink:href="#icon-juejin" data-v-1375e54c data-v-1375e54c></use></svg></span></a></p> <!----> <p class="footer-text" data-v-1375e54c>Copyright 2020-present <a href="https://github.com/lizixin519" target="_blank">lizixin</a> | MIT License</p></footer></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/assets/js/app.1c78b9e6.js" defer></script><script src="/assets/js/7.ea18eff5.js" defer></script><script src="/assets/js/27.e46db41a.js" defer></script>
+  </body>
+</html>
